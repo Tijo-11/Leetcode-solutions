@@ -1,0 +1,15 @@
+class Solution:
+    def findRelativeRanks(self, score: List[int]) -> List[str]:
+        array= [str(i+1) for i in range(len(score))]
+        sorted_scores= sorted(score, reverse=True)
+
+        if len(array)>0:
+            array[0]="Gold Medal"
+        if len(array)>1:
+            array[1] = "Silver Medal"
+        if len(array)>2:
+            array[2] ="Bronze Medal"
+        dict_score = {sorted_scores[i]:array[i] for i in range(len(score))}
+        answer = [dict_score.get(i) for i in score]
+        return answer
+############################################

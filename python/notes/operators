@@ -1,1 +1,29 @@
 
+#Flooring of negative values
+#Giving non bookean values to logical operators, short circuiting
+#When you use non- Boolean expressions inside logical operators, it will give you last evaluated value
+# Even if containers (eg list, tuple) have same elements they don't point to same location
+# Membership operator checks keys in case of dictionary
+# bin(12) = 0b1100
+# int("binary rep(with 0b)", base)
+# Bitwise And=$, Or= |, XOR= ^
+# Leftshift multply with 2 to the power argument  <<
+# In right shift last digit in binary rep is ignored. Hence it is like floor divison with 2 to the power argument
+# X>>2
+# Bitwise not: ~
+# When you store a number in memory, it is stored in multiples of bytes, not bits 32 bit system, it uses 4 bytes
+# -ve numbers are stored in 2s compliment form
+# 1 s compliment, toggling all bits. Add 1 to it, we get 2's compliment.
+Bitwise not of 5 is 2s compliment of 6
+# -121%10 =9
+# 49%-10 = -1
+# Sn= a/2(a+last)
+# a(r^n-1)/(r-1)   or a(1-r^n)/(1-r)
+# or() function overloads bitwise or
+# s = "gfg"
+#print(not ("g" or "") not in s)
+# print(oct(23))
+# 0o
+# rshift() overloads the >> operator
+# There is no operator ++ in Python
+# Operator precedence: * have highest, * has right to left sssocitivity, all others left to right. Bracket has highest priority , than **

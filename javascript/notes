@@ -28,4 +28,36 @@ const [y] = x
 console.log(y) // Answer is 1
 //python will give error, unpacking of python and destructuring of javascript is different
   ##################################################
-  
+forming letters array in javascript
+const lowercaseAlphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
+___________________________________________
+In JavaScript, every character in a string is stored internally as a Unicode code point (a number that represents that character).
+char.charCodeAt(index)  returns the numeric code of the character at the given index.
+let char = "A";
+console.log(char.charCodeAt(0)); // 65
+
+
+"A" → Unicode 65
+
+"a" → Unicode 97
+
+"z" → Unicode 122
+
+"0" → Unicode 48
+
+" " (space) → Unicode 32
+
+So char.charCodeAt(0) gives you the number representing that character.
+
+
+
+###################################################################
+In JavaScript, the way you find the length depends on the type of data structure:
+1. Array :- Use the .length property.
+2. A Set doesn’t use .length — it has a .size property.
+3. Strings also use .length.
+4. Objects don’t have .length or .size by default.
+Instead, you can use Object.keys() (or Object.values() / Object.entries()), then check the length of that array.
+let obj = { a: 1, b: 2, c: 3 };
+console.log(Object.keys(obj).length); // 3
+###############################################

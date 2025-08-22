@@ -1,0 +1,31 @@
+var have global scope
+let and const have block scope
+let and const can't be re-declared in same block
+const doesn't define a constant value, but a constant reference to a location
+const can not be re-assigned in same block
+Primitive data type: only single value can be assigned to variable
+typeof null is object, but typeof undefined is undefined
+typeof arry=[1,b,d] is also object
+Template literal can he used to print multi line texts with breaks
+Javascript don't have //, use math.floor()
+const x='8", const x= '3'
+x+y == 83
+x-y= 5
+x/y == 2.66
+x%y == 2
+Here the string get auto-converted to numbers internally
+const x= "apple"
+const y = "mango"
+x-y == NaN
+type- number, converting function Number
+type -string, String()
+type boolean, converting function Boolean()
+npm install readline-sync
+///////////////////////////////////////
+Array destructuring
+const x = [1,2,3,4,5]
+const [y] = x
+console.log(y) // Answer is 1
+//python will give error, unpacking of python and destructuring of javascript is different
+  ##################################################
+  

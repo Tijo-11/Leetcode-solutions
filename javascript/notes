@@ -61,3 +61,42 @@ Instead, you can use Object.keys() (or Object.values() / Object.entries()), then
 let obj = { a: 1, b: 2, c: 3 };
 console.log(Object.keys(obj).length); // 3
 ###############################################
+In JavaScript, for...in iterates over keys/indexes, not values.
+for (let word in words) {} .. 
+So in your loop, word is not each string, it’s the index ("0", "1", "2", …).
+
+Use for...of to iterate directly over values:
+
+###############
+
+# JavaScript Loop Variants for Array Iteration
+
+This table compares the 4 main ways to loop over arrays in JavaScript, using the **Morse Code problem** as an example.
+
+---
+
+## 🔹 Table of Loop Variants
+
+| Loop Type       | Syntax                          | Behavior                                      | Example with `["gin","zen","gig","msg"]` | Correct for Morse Problem? |
+|-----------------|---------------------------------|-----------------------------------------------|------------------------------------------|----------------------------|
+| **Classic for** | `for (let i=0; i<words.length; i++)` | Iterates by **index**                          | `words[i]` gives `"gin"`, `"zen"`, …      | ✅ Yes |
+| **for...in**    | `for (let i in words)`          | Iterates over **indexes** as strings (`"0"`, `"1"`, …) | `i` = `"0"`, `"1"`, … → need `words[i]`   | ⚠️ No (bug if used directly, unless `words[i]`) |
+| **for...of**    | `for (let word of words)`       | Iterates directly over **values**              | `word` = `"gin"`, `"zen"`, `"gig"`, `"msg"` | ✅ Yes (best choice) |
+| **forEach**     | `words.forEach(word => {...})`  | Executes callback on each element              | `word` = `"gin"`, `"zen"`, `"gig"`, `"msg"` | ✅ Yes |
+
+---
+
+## 🔹 Morse Code Examples
+
+### 1. Classic for loop
+```js
+for (let i = 0; i < words.length; i++) {
+    let morse = '';
+    for (let char of words[i]) {
+        morse += morseCode[char.charCodeAt(0) - 'a'.charCodeAt(0)];
+    }
+    uniqueCodes.add(morse);
+}
+##########################################################################################################################
+
+

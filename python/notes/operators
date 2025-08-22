@@ -27,3 +27,28 @@ Bitwise not of 5 is 2s compliment of 6
 # rshift() overloads the >> operator
 # There is no operator ++ in Python
 # Operator precedence: * have highest, * has right to left sssocitivity, all others left to right. Bracket has highest priority , than **
+
+
+###############################################################################
+import string
+letters = list(string.ascii_lowercase)
+Wow! And other string module data:
+
+ascii_letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'
+
+ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+digits = '0123456789'
+
+hexdigits = '0123456789abcdefABCDEF'
+
+octdigits = '01234567'
+
+printable = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r\x0b\x0c'
+
+punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+
+whitespace = ' \t\n\r\x0b\x0c'
+###############################################################################################################################

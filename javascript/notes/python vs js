@@ -1,1 +1,24 @@
+JavaScript: const uniqueCodes = new Set();
+Python equivalent: unique_codes = set()
+JavaScript’s Set is identical to Python’s set. It stores unique values and has a size property (like Python’s len(set)).
+###############################################
+JavaScript: for (let word of words) { ... }
+Python equivalent: for word in words: ...
+JavaScript’s for...of loop is like Python’s for...in for iterating over arrays or strings.
+####################################################
+JavaScript: char.charCodeAt(0) - 'a'.charCodeAt(0)
+Python equivalent: ord(char) - ord('a')
+charCodeAt(0) returns the ASCII code of a character (like Python’s ord). Subtracting 'a'.charCodeAt(0) (ASCII 97) maps 'a' to 0, 'b' to 1, etc.,
+to index into morseTable.
+We build the Morse code string with morse += ..., like Python’s string concatenation (morse += ...).
+######################################################
+Adding to Set:
 
+JavaScript: uniqueCodes.add(morse);
+Python equivalent: unique_codes.add(morse)
+Identical functionality: adds the Morse code string to the Set, ignoring duplicates.
+#####################################################
+JavaScript: return uniqueCodes.size;
+Python equivalent: return len(unique_codes)
+Set.size in JavaScript is like len(set) in Python.
+########################################################

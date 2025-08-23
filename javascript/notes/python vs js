@@ -22,3 +22,30 @@ JavaScript: return uniqueCodes.size;
 Python equivalent: return len(unique_codes)
 Set.size in JavaScript is like len(set) in Python.
 ########################################################
+sort
+python .sort() method, list.sort() or list.sort(reverse=True)
+or sorted function, sorted(list) and sorted(list, reverse=True)
+
+In JavaScript, you use the .sort() method. By default, .sort() converts items to strings and sorts them lexicographically (which can give unexpected results with numbers). 
+To sort numbers properly, you pass a compare function.
+let sortedlist = list.sort((a, b) => a - b);
+
+🔹 Descending order
+let sortedlist = list.sort((a, b) => b-a);
+The .sort() method modifies the original array in JavaScript (unlike Python’s sorted() which creates a copy).
+
+If you want to keep the original untouched, clone first:
+let sortedlist = [...list].sort((a, b) => a - b);
+///////////////////////////////////////////////
+//In JavaScript, comparing arrays with === (or ==) doesn’t check if they have the same contents — it only checks if they’re the same object in memory.
+Since ascending and descending are new arrays, they’ll never be strictly equal to nums.
+Fix using .every() to compare values:
+
+let ascending = [...nums].sort((a, b) => a - b);
+    let descending = [...nums].sort((a, b) => b - a);
+
+    let isAscending = nums.every((val, i) => val === ascending[i]);
+    let isDescending = nums.every((val, i) => val === descending[i]);
+
+//////////////////////////////////////////////////////
+

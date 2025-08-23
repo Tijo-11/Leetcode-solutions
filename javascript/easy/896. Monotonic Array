@@ -1,0 +1,84 @@
+var isMonotonic = function(nums) {
+    let ascending = [...nums].sort((a,b) => a-b);
+    let descending = [...nums].sort((a,b) => b-a);
+//In JavaScript, comparing arrays with === (or ==) doesn’t check if they have the same contents — it only checks if they’re the same object in memory. Since ascending and descending are new arrays, they’ll never be strictly equal to nums.
+let isAscending = nums.every((val,i)=> val===ascending[i])
+let isDescending = nums.every((val, i) => val ===descending[i])
+
+return isAscending || isDescending
+
+};
+////////////////////////////////////
+
+var isMonotonic = function(nums) {
+    let increasing = true;
+    let decreasing = true;
+
+    for (let i=1; i < nums.length; i++){
+        if (nums[i]> nums[i-1]) {decreasing = false;}
+        if (nums[i]< nums[i-1]) {increasing = false;}
+
+    }
+    return increasing || decreasing
+}
+
+//////////////////////////////////////////
+In JavaScript (and many C-like languages), the braces {} after an if are optional if the body has only one statement.
+// With braces
+if (nums[i] < nums[i - 1]) { 
+    increasing = false; 
+}
+
+// Without braces (shorthand)
+if (nums[i] < nums[i - 1]) 
+    increasing = false;
+
+###########
+But here’s the catch:
+Without {}, only the next single statement belongs to the if.
+If you later add another line, it might cause a bug.
+////////////////////////////////////////////////
+// You might think both run only if nums[i] < nums[i-1] ...
+if (nums[i] < nums[i - 1]) 
+    increasing = false;
+    decreasing = true;   // ❌ This always runs, not part of the if
+/////////////////////////////////////////////
+for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[i - 1]) decreasing = false;
+    if (nums[i] < nums[i - 1]) increasing = false;
+}
+we never use break; even after we know the array can’t be monotonic.
+
+✅ Why no break here?
+Because even if one of the flags (increasing or decreasing) becomes false, we still need to keep checking the rest of the array to confirm the other condition.
+
+Example:
+
+nums = [1, 2, 2, 1];
+
+
+At i=1: nums[1] > nums[0] → decreasing = false
+
+We can’t break yet, because the array might still be monotone increasing.
+
+Continue checking…
+
+At i=3: nums[3] < nums[2] → increasing = false
+
+Now both flags are false → we know it’s not monotonic.
+
+So we need to finish (or at least keep going until both flags are false).
+
+⚡ Optimization with break
+
+We could add a break once both are false — because at that point, there’s no way the array is monotonic:
+
+for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > nums[i - 1]) decreasing = false;
+    if (nums[i] < nums[i - 1]) increasing = false;
+    
+    if (!increasing && !decreasing) break; // 🚀 stop early
+}
+
+
+This saves time for arrays that are definitely not monotonic, especially if they’re very large.

@@ -1,0 +1,78 @@
+What is difference between
+40==40 
+And 40===40
+Is it related to 40=="40"
+and 40==="40"
+////////////////////////////////////////////////////////////////
+== allows type coercion, converting operands to the same type before comparing.
+=== requires both value and type to be identical, making it stricter.
+///////////////////////////////////////////////////////////////////////
+console.log(5 == '5');  // true, because '5' is coerced to 5
+console.log(0 == false);  // true, because false is coerced to 0
+console.log(null == undefined);  // true, special case in loose equality
+////////////////////////////////////////////////////////////////////////
+console.log(5 === '5');  // false, different types (number vs string)
+console.log(0 === false);  // false, different types (number vs boolean)
+console.log(null === undefined);  // false, different types
+console.log(5 === 5);  // true, same value and type
+/////////////////////////////////////////////////////////////////
+null>0, false
+null<1, true
+What about None in Python?
+Nan>0??
+
+When you compare null with any number, the value of null becomes 0. (Not equality, >, <, >= or <=)
+Null >=0, true
+null==0, false
+When you check for equality, ==, null does not become 0, null remains null
+/////////////////////////////////////////////////////////
+Nullish Coalescing (??) Operator:
+The nullish coalescing operator will only return the fallback value if the variable is null or undefined. 
+It will not return the fallback value for falsy values like 0 or ''
+
+The OR operator returns the first truthy value in an expression. It will treat values like 0, "" (empty string), null, and undefined as falsy values
+
+nullish coalescing operator correctly keeps the value 0, as 0 is not null or undefined.
+
+The nullish coalescing operator is especially useful when you need to assign default values to variables that may be null or undefined, 
+but you want to treat other falsy values (like 0 or "") as valid.
+
+|| (OR operator) treats all falsy values (false, 0, "", null, undefined, etc.) as false.
+?? (Nullish Coalescing operator) only considers null and undefined as "nullish" values, and treats other falsy values (0, "", false) as valid.
+
+////////////////////////////////////////////
+The syntax of a for loop is as follows:
+
+for (initialization; condition; increment) {
+
+    // Code to be executed in each iteration
+
+}
+
+Initialization: This statement is executed once before the loop starts. It typically initializes a counter variable.
+Condition: This expression is evaluated before each iteration. If the condition is true, the loop continues; if false, the loop stops.
+Increment: This statement is executed after each iteration. It usually increments the counter variable.
+///////////////////////////////////////////////////
+var i;
+for (i = 0; i < 10; i++)
+{
+    console.log("Hello World!");
+}
+///////////////////////////////////////////////////
+The do while loop is similar to the while loop, but it guarantees that the code inside the loop is executed at least once, even if the condition is false.
+
+do {
+    // Code to be executed in each iteration
+} while (condition
+
+let i = 0;
+
+do {
+    console.log(i);
+    i++;
+} while (i < 10);
+///////////////////////////////////////////////////
+if, else, else if
+&&, ||, !
+
+

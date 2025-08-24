@@ -1,0 +1,131 @@
+class Solution {
+    utility(a) {
+        let result;
+        if (a===0) result = "Zero";
+        else if (a>0) result = "Positive";
+        else result = "Negative";
+        console.log(result)
+        
+    }
+}
+
+Why did console.log() worked here and not in 
+
+class Solution {
+    utility(number) {
+        let result;
+        switch(number){
+            case 1:
+                result = "One";
+                break;
+            case 2:
+                result = "Two";
+                break;
+            case 3:
+                result = "Three";
+                break;
+            case 4:
+                result = "Four";
+                break;
+            case 5:
+                result = "Five";
+                break;
+            case 6:
+                result = "Six";
+                break;
+            case 7:
+                result = "Seven";
+                break;
+            case 8:
+                result = "Eight";
+                break;
+            case 9:
+                result = "Nine";
+                break;
+            default:
+                result = "Unknown"
+        }
+        console.log(result)
+    }
+}
+#############################################
+In the first one 
+Why?
+
+The method itself does a console.log(result).
+
+You are not wrapping the method call inside another console.log().
+
+So you only see one log (from inside the method).
+###########################
+In your switch code
+class Solution {
+    utility(number) {
+        let result;
+        switch(number){
+            case 1: result = "One"; break;
+            ...
+            default: result = "Unknown"
+        }
+        console.log(result)
+    }
+}
+
+
+If you call it like this:
+
+let obj = new Solution();
+console.log(obj.utility(10));
+
+
+You’ll see:
+
+Unknown
+undefined
+
+
+Why 2 logs?
+
+The first "Unknown" comes from the console.log(result) inside the method.
+
+The second undefined comes from the outer console.log(...), because utility() doesn’t return anything → so it evaluates to undefined.
+
+⚡ Key difference
+
+In your first example, you probably just did:
+
+obj.utility(10);
+
+
+(no outer console.log())
+
+In your switch example, you probably did:
+
+console.log(obj.utility(10));
+
+
+(outer console.log() added, so you saw undefined too)
+
+That’s why it looked like console.log() “worked” in one case but not the other.
+In reality, both methods behave the same — the difference is how you called them.
+
+################
+Let the method only log:
+
+obj.utility(10);   // prints "Unknown"
+
+
+Or make the method return instead of logging:
+
+class Solution {
+    utility(number) {
+        switch(number) {
+            case 1: return "One";
+            case 2: return "Two";
+            ...
+            default: return "Unknown";
+        }
+    }
+}
+
+console.log(obj.utility(10)); // prints "Unknown"

@@ -18,7 +18,7 @@ class Solution {
     
     }
 }
-
+/////////////////////////
 
 /////////////////////////
 In Python, you can do:
@@ -50,3 +50,33 @@ console.log(row);  // prints "*****"
 
 
 This is usually the cleaner way for shapes like squares.
+//////////////////////////
+
+
+function findPattern(s, p) {
+    let n = s.length;
+    let m = p.length;
+
+    // Edge case: empty pattern
+    if (m === 0) return 0;
+
+    // Loop over s, only up to where p could still fit
+    for (let i = 0; i <= n - m; i++) {
+        let match = true;
+        for (let j = 0; j < m; j++) {
+            if (s[i + j] !== p[j]) {
+                match = false;
+                break;
+            }
+        }
+        if (match) return i;
+    }
+
+    return -1; // not found
+}
+
+// Example
+console.log(findPattern("Hello", "llo")); // 2
+console.log(findPattern("Hello", "Lo"));  // -1 (case-sensitive)
+console.log(findPattern("abcdef", "abc")); // 0
+

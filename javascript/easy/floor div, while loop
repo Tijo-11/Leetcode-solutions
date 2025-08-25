@@ -1,0 +1,19 @@
+Given a number n, find the first digit of the number, without converting to string or using Math.floor()
+
+class Solution {
+    firstDigit(num) {
+        // code here
+       while(num>=10){
+           let q=0;
+           let temp = num;
+           while(temp>=10){
+               temp-=10;
+               q++
+           }
+           //result
+           num = q
+       }
+       return num
+    
+    }
+}

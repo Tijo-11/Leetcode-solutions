@@ -18,3 +18,35 @@ class Solution {
     
     }
 }
+
+
+/////////////////////////
+In Python, you can do:
+
+print("*", end="")
+
+
+so it won’t add a newline automatically.
+
+But in JavaScript, console.log() always prints a newline at the end.
+There’s no end="" parameter like Python.
+
+Instead, you have two main options:
+
+1. Use process.stdout.write() (Node.js only)
+process.stdout.write("*");
+process.stdout.write("*");
+process.stdout.write("*\n");
+
+
+This prints *** on one line.
+
+2. Build a string first, then console.log once
+let row = "";
+for (let i = 0; i < 5; i++) {
+    row += "*";
+}
+console.log(row);  // prints "*****"
+
+
+This is usually the cleaner way for shapes like squares.

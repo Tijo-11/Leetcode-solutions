@@ -1,0 +1,36 @@
+Diagonal math.sqrt[a**2 + b**2)
+
+Python also allows unpacking inside the loop:
+for w, h in list1:
+    print(w, h)
+
+utput:
+
+10 3
+5 9
+8 3
+
+
+Here, instead of giving you the list [10,3] as x, Python directly unpacks it into w and h.
+So both are correct:
+
+for x in list1: → x is [w, h]
+
+for w, h in list1: → w is x[0], h is x[1]
+
+//////////////////////
+import math
+from typing import List
+
+class Solution:
+    def areaOfMaxDiagonal(self, dimensions: List[List[int]]) -> int:
+        max_diag = -1
+        max_area = -1
+        for w, h in dimensions:
+            diag = math.sqrt(w*w + h*h)
+            area = w*h
+            # update if longer diagonal OR same diagonal but larger area
+            if diag > max_diag or (abs(diag - max_diag) < 1e-9 and area > max_area):
+                max_diag = diag
+                max_area = area
+        return max_area

@@ -1,0 +1,58 @@
+Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+
+Given a balanced string s, split it into some number of substrings such that:
+
+Each substring is balanced.
+Return the maximum number of balanced strings you can obtain.
+
+ 
+
+Example 1:
+
+Input: s = "RLRRLLRLRL"
+Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+Example 2:
+
+Input: s = "RLRRRLLRLL"
+Output: 2
+Explanation: s can be split into "RL", "RRRLLRLL", each substring contains same number of 'L' and 'R'.
+Note that s cannot be split into "RL", "RR", "RL", "LR", "LL", because the 2nd and 5th substrings are not balanced.
+######################################################
+Understanding Problem
+Logic Explanation
+To maximize the number of balanced substrings, we need to split s into the most possible substrings, each with an equal number of 'L' and 'R' characters. Since s is guaranteed to be balanced, the total counts of 'L' and 'R' are equal, and we want to find the maximum number of substrings that are individually balanced.
+Key Observations
+
+A balanced substring must have an equal number of 'L' and 'R' characters (e.g., "RL", "RRLL", "LLRR").
+To maximize the number of substrings, we should aim for the smallest possible balanced substrings, as smaller substrings allow more splits.
+The smallest balanced substring has one 'L' and one 'R' (e.g., "RL" or "LR", length 2), but substrings can be longer (e.g., "RRLL", "LLRRRR").
+Since s is balanced, we can process it sequentially and form balanced substrings greedily by tracking the count of 'L' and 'R' characters.
+
+Greedy Approach
+
+Traverse the string character by character.
+Keep a running balance:
+
+Increment for 'R', decrement for 'L' (or vice versa).
+When the balance reaches 0, we’ve found a balanced substring (equal 'L' and 'R' counts).
+
+
+Each time the balance hits 0, we’ve completed a balanced substring, so increment a counter.
+Continue until the entire string is processed.
+Since s is balanced, the final balance will be 0, ensuring all characters are used.
+
+This is greedy because we take the earliest possible balanced substring each time, maximizing the number of splits.
+##################################################
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        balance = 0 #to track the running count ('R' increments, 'L' decrements).
+        count = 0 #to track the number of balanced substrings.
+        for ch in s: #Iterate through each character in s
+            if ch=="R":#If character is 'R', increment balance (e.g., balance += 1).
+                balance +=1
+            elif ch=="L": #If character is 'L', decrement balance (e.g., balance -= 1).
+                balance-=1
+            if balance==0: #If balance == 0, we’ve found a balanced substring, so increment count.
+                count+=1
+        return count

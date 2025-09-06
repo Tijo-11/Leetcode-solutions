@@ -1,0 +1,29 @@
+Employees
+Employee ID, FirstName, LastName, Department_ID
+----------------------------------------
+Departments
+Department_ID, Department_name
+---------------------------------------
+Salaries 
+Employee ID, Salary, 
+------------------------------------
+Write SQL query to increase salary of employees with department name HR. ( There are three tables called Employees, Departments and Salaries)
+##########################
+UPDATE Salaries
+SET Salary = Salary * 1.10   -- Example: 10% increase
+FROM Salaries
+JOIN Employees ON Salaries.Employee_ID = Employees.Employee_ID
+JOIN Departments ON Employees.Department_ID = Departments.Department_ID
+WHERE Departments.Department_name = 'HR';
+#########################################
+Also write a query to selct fullname, employee id, department name
+
+SELECT 
+    Employees.Employee_ID,
+    Employees.FirstName + ' ' + Employees.LastName AS FullName,   -- For SQL Server
+    Departments.Department_name
+FROM Employees
+JOIN Departments 
+    ON Employees.Department_ID = Departments.Department_ID;
+##############################################################
+

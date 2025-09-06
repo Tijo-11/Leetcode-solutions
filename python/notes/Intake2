@@ -1,0 +1,6 @@
+No need to use s.split("") to converts list of characters
+just use list(s) where s is a string
+Delimietter is used for substring, can't use empty
+------------------------------
+
+Implement method overloading

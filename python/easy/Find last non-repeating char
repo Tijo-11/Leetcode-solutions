@@ -1,0 +1,32 @@
+# string also has count method
+
+
+s_list = list(input("Enter string: "))
+
+# collect all unique (non-repeating) characters
+unique = [ch for ch in s_list if s_list.count(ch) == 1]
+
+if unique:
+    print("First non-repeating character from end:", unique[-1])
+else:
+    print("No non-repeating character found")
+# The above is again o(N2) as in list comprehension also count is used in loop
+#---------------------------
+from collections import Counter
+
+s = input("Enter a string: ")
+
+# Count frequencies of each character
+freq = Counter(s)
+
+# Traverse backward
+for i in range(len(s) - 1, -1, -1):
+    if freq[s[i]] == 1:
+        print("First non-repeating character from end:", s[i])
+        break
+else:
+    print("No non-repeating character found")
+#----------------
+The above one is O(n)
+Enter a string: swiss #answer i
+Enter a string: aabbcc #no answer

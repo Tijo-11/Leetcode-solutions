@@ -21,7 +21,30 @@ Output:
 +---------+
 ###########################################
 SELECT email AS Email FROM Person GROUP BY email HAVING COUNT(email) > 1;
-##############
-GROUP BY email groups rows by the email field.
-HAVING COUNT(email) > 1 filters only those groups where an email appears more than once.
-AS Email makes the column name match the expected output format.
+1)GROUP BY email groups rows by the email field.
+2)HAVING COUNT(email) > 1 filters only those groups where an email appears more than once.
+3)AS Email makes the column name match the expected output format.
+#############Another method--------------######################
+Grouping can be expensive. If you only want duplicate values (not counts), a JOIN may run faster:
+
+Select Distinct p1.email from Person p1
+join Person p2
+on p1.email = p2.email  AND p1.id <> p2.id;
+
+#-----------------
+Person p1 → gives the table Person an alias p1.
+Person p2 → gives the same table another alias p2.
+
+you don’t need AS for table aliases in SQL.
+FROM Person AS p1  -- ✅ also valid
+#-------------
+SELECT email AS DuplicateEmail   -- explicit
+SELECT email DuplicateEmail      -- also works in MySQL, SQL Server
+#-----------------
+In SQL, the difference between COUNT(*) and COUNT(column) is not about speed, it’s about what they count:
+COUNT(*) → counts all rows, regardless of NULLs.
+COUNT(column) → counts only rows where column is not NULL.
+#-----------
+In most SQL engines (MySQL, PostgreSQL, SQL Server, etc.), the optimizer treats them the same if the column is NOT NULL.
+In fact, many engines rewrite COUNT(email) to COUNT(*) internally if the column can’t be null.
+So performance is identical here.

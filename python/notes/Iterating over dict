@@ -1,0 +1,4 @@
+if you iterate directly over a dictionary in Python (like for x in freq), you are iterating over its keys by default.
+[x for x in freq], x will be each key in freq.
+values → [v for v in freq.values()]
+key–value pairs (tuples) → [(k, v) for k, v in freq.items()]

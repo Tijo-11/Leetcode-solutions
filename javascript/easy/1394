@@ -1,0 +1,62 @@
+In JavaScript, when you use an object ({}) as a frequency map:
+
+let freq = {};
+freq[2] = 1;
+
+
+the key "2" is stored as a string internally, not as a number.
+So when you iterate with:
+
+for (let key in freq) {
+    // key is a string here
+}
+
+
+key will be "2", "5", etc., not numeric 2, 5.
+
+That’s why in this part:
+
+if (parseInt(key) === freq[key]) {
+
+
+we convert the string key back into a number before comparing.
+#######------------
+✅ Alternative (avoid parseInt)
+
+Instead of using parseInt, you can just use Number(key) (faster & cleaner):
+
+for (let key in freq) {
+    let num = Number(key); // convert string → number
+    if (num === freq[key]) {
+        res = Math.max(res, num);
+    }
+}
+---------------------------
+var findLucky = function(arr) {
+    let freq = {};
+    for (let i of arr){
+        if (!(i in freq)){
+            freq[i]=1;
+        }
+        else{
+            freq[i] += 1;
+        }
+    }
+    let luckynumbers = [];
+    for (let key in freq){
+        if (parseInt(key)===freq[key]){
+            luckynumbers.push(parseInt(key));
+        }
+    }
+
+    return luckynumbers.length ? Math.max(...luckynumbers) : -1
+    
+};
+
+
+Both parseInt("2") and Number("2") give 2, but:
+
+Number() is safer here because parseInt("2abc") → 2, while Number("2abc") → NaN.
+
+And we don’t want partial parsing, we want strict conversion.
+##########-----------------

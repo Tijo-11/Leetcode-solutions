@@ -1,0 +1,22 @@
+Write a solution to delete all duplicate emails, keeping only one unique email with the smallest id.
+#-----
+In MySQL it is using slef join, you can combine delete and join like this
+DELETE p1
+FROM Person p1
+JOIN Person p2
+ON p1.Email = p2.Email
+WHERE p1.Id > p2.Id;
+####################--------------------############
+But PostgreSQL does not support it
+You have to to use keyword 'USING' with DELETE or UPDATE operation
+DELETE FROM Person p1
+USING Person p2
+WHERE p1.Email = p2.Email
+  AND p1.Id > p2.Id;
+
+#######------------------------###################-----------
+
+In PostgreSQL, the keyword USING inside a DELETE (and also UPDATE) is a way to perform a self-join or join with another table during the delete operation.
+DELETE FROM target_table [AS alias]
+USING other_table [AS alias]
+WHERE condition;

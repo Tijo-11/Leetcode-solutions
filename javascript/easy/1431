@@ -1,0 +1,43 @@
+JavaScript does not have a built-in list comprehension syntax like Python, but you can achieve the same results using array methods like map(), filter(), and reduce().
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(number => number * 2);
+#-------
+2. filter(): For selecting a subset of elements
+The filter() method creates a new array containing only the elements that pass a specific condition. It's used when you want to get a subset of the original array. 
+Example: Finding all even numbers
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(number => number % 2 === 0);
+#------------------
+Chaining filter() and map(): For filtering and transforming
+const numbers = [1, 2, 3, 4, 5, 6];
+const squaredEvens = numbers.filter(num => num % 2 === 0)
+                          .map(num => num * num);
+
+console.log(squaredEvens);
+// Output: [4, 16, 36]
+#-----------------
+4. reduce(): For accumulating a single value
+It takes a callback function and an optional initial value for an accumulator. 
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+console.log(sum);
+// Output: 15
+
+
+
+
+###----------------
+To find the maximum integer in a JavaScript array, the Math.max() method combined with the spread operator (...) is the most common and efficient approach.
+const numbers = [22, 65, 1, 39, 88, 12];
+const maxNumber = Math.max(...numbers);
+
+console.log(maxNumber); // Output: 88
+
+#--------------
+Using Math.max.apply(): This method allows you to call Math.max() with an array of arguments.
+
+const numbers = [22, 65, 1, 39, 88, 12];
+    const maxNumber = Math.max.apply(null, numbers);
+
+    console.log(maxNumber); // Output: 88

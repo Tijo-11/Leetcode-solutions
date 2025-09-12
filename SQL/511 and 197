@@ -1,0 +1,14 @@
+511
+SELECT player_id,
+       MIN(event_date) AS first_login
+FROM Activity
+GROUP BY player_id;
+#----------------
+GROUP BY player_id: Groups all login records by player.
+
+MIN(event_date): Retrieves the earliest login date for each player.
+#################
+select w1.id from weather as w1 
+join weather w2
+on w1.recordDate = w2.recordDate+1 and
+w1.temperature > w2.temperature;

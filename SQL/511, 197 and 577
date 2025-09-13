@@ -12,3 +12,9 @@ select w1.id from weather as w1
 join weather w2
 on w1.recordDate = w2.recordDate+1 and
 w1.temperature > w2.temperature;
+###-----577
+....
+WHERE b.bonus < 1000 OR b.bonus IS NULL;
+LEFT JOIN ensures all employees appear, even if they don’t have a matching record in Bonus.
+The WHERE filters out only the cases where bonus >= 1000.
+We need to explicitly check bonus IS NULL so employees without a bonus also show up.( In where )

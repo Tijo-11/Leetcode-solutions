@@ -1,0 +1,6 @@
+The s.count(x) method counts non-overlapping occurrences of the exact substring x in the string s. This is not what the problem requires.
+For example, in s = "111":
+
+s.count("1") returns 3, which is correct for single '1's.
+s.count("11") returns 1 because it finds "11" at positions 0-1 and then skips to position 2, missing the "11" at positions 1-2.
+s.count("111") returns 1, which is correct.

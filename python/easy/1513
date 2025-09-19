@@ -4,3 +4,35 @@ For example, in s = "111":
 s.count("1") returns 3, which is correct for single '1's.
 s.count("11") returns 1 because it finds "11" at positions 0-1 and then skips to position 2, missing the "11" at positions 1-2.
 s.count("111") returns 1, which is correct.
+#################-------------
+class Solution:
+    def numSub(self, s: str) -> int:
+        MOD = 10**9 + 7
+        result = 0
+        count = 0  # Length of current '1's sequence
+        
+        for char in s:
+            if char == '1':
+                count += 1  # Extend current sequence
+            else:
+                # End of sequence; calculate substrings
+                result = (result + (count * (count + 1) // 2)) % MOD
+                count = 0  # Reset for next sequence
+        
+        # Handle case where string ends with '1's
+        result = (result + (count * (count + 1) // 2)) % MOD
+        
+        return result
+#________________
+
+
+To count all substrings of '1's:
+
+Identify each consecutive sequence of '1's (e.g., in "10111", the sequences are "1" and "111").
+For a sequence of length $n$, the number of substrings is the sum of substrings of length 1 to $n$, which is:
+$$1 + 2 + \dots + n = \frac{n \cdot (n+1)}{2}$$
+
+Example: For "111" ($n = 3$), substrings are 3 (length 1) + 2 (length 2) + 1 (length 3) = $\frac{3 \cdot 4}{2} = 6$.
+
+
+Sum this across all sequences and apply modulo $10^9 + 7$.

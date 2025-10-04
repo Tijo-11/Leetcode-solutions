@@ -1,12 +1,14 @@
 OR103 Reviewer
 2:09 PM
 Write a list comprehension to flatten a nested list: [[1,2],[3,4],5,[7,8,9,10]] -> [1,2,3,4,5,6,7,8,9,10]
+First gave [[1,2], [3,4]] --it worked
 OR103 Reviewer
 2:15 PM
 Implement a decorator that retries a function 3 times if it raises an exception.
 OR103 Reviewer
 2:57 PM
 Convert an array of objects into a single object using reduce.
+REverse print words in a sentence in javascript
 
 
 [{id:1,name:'a'}, {id:2,name:'b'}] → {1:'a',2:'b'}

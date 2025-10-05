@@ -1,0 +1,37 @@
+Python
+import string
+
+a = list(string.ascii_lowercase)
+b = list(string.ascii_uppercase)
+
+string.ascii_lowercase constant contains all lowercase alphabets from 'a' to 'z'.
+string.ascii_uppercase constant contains all uppercase alphabets from 'A' to 'Z'.
+--------------------------------
+Using List Comprehension with chr()
+a = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+b = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
+ord('a') function returns the ASCII value of 'a' (97), and we can use chr() to convert it back to a character.
+__________________________
+Using map() Function with chr()
+a = list(map(chr, range(ord('a'), ord('z') + 1)))
+b = list(map(chr, range(ord('A'), ord('Z') + 1)))
+-------------------------------
+Using itertools.chain()
+import string, itertools
+
+a = list(itertools.chain(string.ascii_lowercase, string.ascii_uppercase))
+
+print(a)
+---------------------------------
+_____________________###--------------Javascript------------------#_____________
+Using Array.from() with String.fromCharCode()
+// Lowercase letters
+const lowercase = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
+
+// Uppercase letters
+const uppercase = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+___________________________________
+✅ Using map() with String.fromCharCode()
+const lowercase = [...Array(26)].map((_, i) => String.fromCharCode(97 + i));
+const uppercase = [...Array(26)].map((_, i) => String.fromCharCode(65 + i));
+-------------------------------------

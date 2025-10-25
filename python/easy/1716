@@ -8,5 +8,19 @@ So:
 - And so on...
 
 
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        weeks = n // 7
+        days = n % 7
+
+        # Sum of full weeks (AP: 28, 35, 42, ...)
+        weeks_money = weeks * (2 * 28 + (weeks - 1) * 7) // 2
+
+        # Sum of leftover days (start from weeks+1)
+        days_money = days * (2 * (weeks + 1) + (days - 1)) // 2
+
+        return weeks_money + days_money
+
+
 
 

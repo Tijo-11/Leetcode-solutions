@@ -7,16 +7,6 @@ So:
 - Week 3: 3, 4, 5, 6, 7, 8, 9 → total = 42
 - And so on...
 
----
-
-### 🧮 Correct Formula
-Let:
-- \( x = \left\lfloor \frac{n}{7} \right\rfloor \) → full weeks
-- \( e = n \mod 7 \) → extra days
-
-Then:
-- Total from full weeks: \( \sum_{i=0}^{x-1} (28 + i \cdot 7) = 7x(x+1)/2 \)
-- Total from extra days: \( \sum_{i=0}^{e-1} (x + i) = ex + \frac{e(e-1)}{2} \)
 
 
 
